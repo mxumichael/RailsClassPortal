@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 20160204175207) do
     t.datetime "updated_at"
   end
 
+  create_table "instructors_courses", force: true do |t|
+    t.integer "instructor_id"
+    t.integer "course_id"
+  end
+
   create_table "students", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -48,13 +53,9 @@ ActiveRecord::Schema.define(version: 20160204175207) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "students_courses", force: true do |t|
+    t.integer "student_id"
+    t.integer "course_id"
   end
 
 end
