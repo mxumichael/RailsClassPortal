@@ -3,12 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>course number</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Status</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,12 +12,6 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.course_number %></td>
-        <td><%= course.title %></td>
-        <td><%= course.description %></td>
-        <td><%= course.start_date %></td>
-        <td><%= course.end_date %></td>
-        <td><%= course.status %></td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>

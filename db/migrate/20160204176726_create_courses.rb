@@ -11,12 +11,15 @@ class CreateCourses < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :students_courses do |t|
-      t.belongs_to :student
-      t.belongs_to :course
+    if not table_exists?(:students_courses)
+      create_table :students_courses do |t|
+        t.belongs_to :student
+        t.belongs_to :course
+      end
     end
 
-    create_table :instructors_courses do |t|
+
+    create_table :courses_instructors do |t|
       t.belongs_to :instructor
       t.belongs_to :course
     end
