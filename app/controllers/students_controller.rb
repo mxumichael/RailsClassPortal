@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    @student = Student.find(params[:id])
   end
 
   # GET /students/new
@@ -28,6 +29,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
+        log_in @student
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render action: 'show', status: :created, location: @student }
       else

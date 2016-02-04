@@ -1,6 +1,9 @@
 Csc517Program1::Application.routes.draw do
-  resources :courses
 
+  get    'signup'  => 'students#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
   resources :admins
 
   resources :instructors
