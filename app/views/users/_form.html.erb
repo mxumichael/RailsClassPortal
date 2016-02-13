@@ -23,18 +23,22 @@
     <%= f.label :password %><br>
     <%= f.text_field :password %>
   </div>
-  <div class="field">
-    <%= f.label :is_student %><br>
-    <%= f.text_field :is_student %>
-  </div>
-  <div class="field">
-    <%= f.label :is_admin %><br>
-    <%= f.text_field :is_admin %>
-  </div>
-  <div class="field">
-    <%= f.label :is_instructor %><br>
-    <%= f.text_field :is_instructor %>
-  </div>
+
+  <% if params[:role] == 'admin' %>
+        <%= f.hidden_field :is_admin, :value => true %>
+        <%= f.hidden_field :is_student, :value => false %>
+        <%= f.hidden_field :is_instructor, :value => false %>
+  <% end %>
+  <% if params[:role] == 'student' %>
+      <%= f.hidden_field :is_admin, :value => false %>
+      <%= f.hidden_field :is_student, :value => true %>
+      <%= f.hidden_field :is_instructor, :value => false %>
+  <% end %>
+  <% if params[:role] == 'instructor' %>
+      <%= f.hidden_field :is_admin, :value => false %>
+      <%= f.hidden_field :is_student, :value => false %>
+      <%= f.hidden_field :is_instructor, :value => true %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
