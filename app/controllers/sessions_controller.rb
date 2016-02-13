@@ -3,25 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    student = Student.find_by(email: params[:session][:email].downcase)
-    if student #&& student.authenticate(params[:session][:password])
-      log_in student
-      redirect_to student
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user #&& student.authenticate(params[:session][:password])
+      log_in user
+      redirect_to user
     else
-      instructor = Instructor.find_by(email: params[:session][:email].downcase)
-      if instructor #&& instructor.authenticate(params[:session][:password])
-        log_in instructor
-        redirect_to instructor
-      else
-        admin = Admin.find_by(email: params[:session][:email].downcase)
-        if admin #&& admin.authenticate(params[:session][:password])
-          log_in admin
-          redirect_to admin
-        else
-          flash.now[:danger] = 'Invalid email/password combination'
-          render 'new'
-        end
-      end
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new'
     end
   end
 

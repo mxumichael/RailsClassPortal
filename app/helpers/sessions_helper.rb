@@ -6,7 +6,7 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= Student.find_by(id: session[:user_id]) || Instructor.find_by(id: session[:user_id]) || Admin.find_by(id: session[:user_id])
+    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   #returns true if the user is logged in, false otherwise
