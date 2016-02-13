@@ -6,7 +6,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :description
       t.date :start_date
       t.date :end_date
-      t.string :status
+      t.boolean :is_active #status
 
       t.timestamps
     end
