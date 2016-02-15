@@ -29,7 +29,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        log_in @user
+        if !logged_in?
+          log_in @user
+        end
         format.html { redirect_to welcome_index_path, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else

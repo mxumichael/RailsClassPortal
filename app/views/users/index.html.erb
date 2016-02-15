@@ -1,14 +1,11 @@
 <h1>Listing users</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>name</th>
+      <th>Name</th>
       <th>Email</th>
-      <th>Password</th>
-      <th>Is student</th>
-      <th>Is admin</th>
-      <th>Is instructor</th>
+      <th>Role</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,10 +17,14 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= user.password %></td>
-        <td><%= user.is_student %></td>
-        <td><%= user.is_admin %></td>
-        <td><%= user.is_instructor %></td>
+        <% if user.is_student %>
+            <% role = 'Student' %>
+        <% elsif user.is_instructor %>
+            <% role = 'Instructor' %>
+        <% else %>
+            <% role = 'Admin' %>
+        <% end %>
+        <td><%= role %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
