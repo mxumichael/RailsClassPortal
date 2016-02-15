@@ -28,7 +28,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to welcome_index_path, notice: 'Course was successfully created.' }
         format.json { render action: 'show', status: :created, location: @course }
       else
         format.html { render action: 'new' }
@@ -69,6 +69,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params[:course]
+      params.require(:course).permit(:course_number, :title, :description, :start_date, :end_date, :status)
     end
 end
