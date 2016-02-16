@@ -34,3 +34,13 @@ User.create!(
         password: 'password',
         password_confirmation: 'password'
 )
+
+(100..115).each do |i|
+  Course.create!(
+            course_number: i,
+            title: 'Course ' + i.to_s,
+            start_date: Date.parse((i-99).to_s + '-01-2016'),
+            end_date: Date.parse((i-99).to_s + '-05-2016'),
+            status: 'Active'
+  )
+end

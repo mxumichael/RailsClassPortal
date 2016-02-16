@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160215194149) do
     t.string   "description"
     t.date     "start_date"
     t.date     "end_date"
-    t.boolean  "is_active"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
