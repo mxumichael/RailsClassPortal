@@ -1,4 +1,13 @@
-<h1>Listing courses</h1>
+<h1>Course List</h1>
+
+<div class="center">
+<%= form_tag courses_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :query, params[:query] %>
+      <%= submit_tag 'Search', :course_number => nil %>
+    </p>
+<% end %>
+</div>
 
 <table class="table">
   <thead>
