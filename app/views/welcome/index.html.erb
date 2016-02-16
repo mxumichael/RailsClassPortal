@@ -10,14 +10,18 @@
           <li><%= link_to 'View Users', users_path %></li>
           <li><%= link_to 'Add Course', new_course_path%></li>
           <li><%= link_to 'View Courses', courses_path%></li>
+          <li><%= link_to 'View Enrollments', enrollments_path%></li>
+
       <%end %>
       <%if is_instructor?(current_user) %>
         <li><%= link_to 'View Enrollment Requests', courses_path %></li>
           <li><%= link_to 'View Courses', courses_path %></li>
+          <li><%= link_to 'Enroll', new_enrollment_path %></li>
       <%end%>
       <%if is_student?(current_user) %>
         <li><%= link_to 'Search Courses', courses_path %></li>
         <li><%= link_to 'View Course History', courses_path %></li>
+        <li><%= link_to 'Enroll', new_enrollment_path %></li>
       <%end %>
       </ul>
   <%else%>

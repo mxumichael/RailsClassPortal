@@ -82,4 +82,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_student, :is_admin, :is_instructor)
     end
+
+  def enroll
+    @user = User.find(t.session)
+    @course = Course.find
+  end
 end
