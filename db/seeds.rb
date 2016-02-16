@@ -12,4 +12,25 @@ User.create!(
     is_admin: true,
     is_instructor: false,
     password: 'password',
-    password_confirmation: 'password')
+    password_confirmation: 'password'
+)
+
+User.create!(
+        name: 'Student User',
+        email: 'student@ncsu.edu',
+        is_student: true,
+        is_admin: false,
+        is_instructor: false,
+        password: 'password',
+        password_confirmation: 'password'
+)
+
+User.create!(
+        name: 'Instructor User',
+        email: 'instructor@ncsu.edu',
+        is_student: false,
+        is_admin: false,
+        is_instructor: true,
+        password: 'password',
+        password_confirmation: 'password'
+)
