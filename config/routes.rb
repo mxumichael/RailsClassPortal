@@ -1,5 +1,11 @@
 Csc517Program1::Application.routes.draw do
 
+  resources :enrollments
+
+  get "enrollments/create"
+  get "enrollments/view_course"
+  get "enrollments/view_mine"
+  get "enrollments/delete"
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
