@@ -11,7 +11,6 @@
           <li><%= link_to 'Add Course', new_course_path%></li>
           <li><%= link_to 'View Courses', courses_path%></li>
           <li><%= link_to 'View Enrollments', enrollments_path%></li>
-          <li><%= link_to 'View Grades', courses_user_path%></li>
 
       <%end %>
       <%if is_instructor?(current_user) %>
