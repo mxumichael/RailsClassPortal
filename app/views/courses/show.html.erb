@@ -29,5 +29,23 @@
   <strong>Status:</strong>
   <%= @course.status %>
 </p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Grade</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course.users.each do |user| %>
+      <tr>
+        <td><%=user.name%></td>
+        <td>A</td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

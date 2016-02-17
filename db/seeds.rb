@@ -44,3 +44,15 @@ User.create!(
             status: 'Active'
   )
 end
+
+10.times do
+  User.create!(
+          name: Faker::Name.name,
+          email: Faker::Internet.email,
+          is_student: true,
+          is_instructor: false,
+          is_admin: false,
+          password: 'password',
+          password_confirmation: 'password'
+  )
+end

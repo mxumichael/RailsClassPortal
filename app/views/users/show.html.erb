@@ -1,29 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>name:</strong>
-  <%= @user.name %>
-</p>
+<h1 class="center"><%= @user.name%></h1>
+<h3 class="center"><%=@user.email%></h3>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<% if @user.is_student? %>
+    <h4 class="center">Student</h4>
+<%end%>
+<% if @user.is_instructor? %>
+    <h4 class="center">Instructor</h4>
+<%end%>
+<% if @user.is_admin? %>
+    <h4 class="center">Admin</h4>
+<%end%>
 
-<p>
-  <strong>Is student:</strong>
-  <%= @user.is_student %>
-</p>
+<br><br>
 
-<p>
-  <strong>Is admin:</strong>
-  <%= @user.is_admin %>
-</p>
+<% if !@user.is_admin? %>
+<h3 class="center">Course History</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Number</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Grade</th>
+  </tr>
+  </thead>
 
-<p>
-  <strong>Is instructor:</strong>
-  <%= @user.is_instructor %>
-</p>
+  <tbody>
+  <% @user.courses.each do |course| %>
+      <tr>
+        <td><%=course.course_number%></td>
+        <td><%=course.title%></td>
+        <td><%=course.status%></td>
+        <td>A</td>
+      </tr>
+  <%end%>
+  </tbody>
+</table>
+<%end%>
 
 <% if current_user == @user || current_user.is_admin? %>
   <%= link_to 'Edit', edit_user_path(@user) %>
