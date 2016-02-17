@@ -15,6 +15,8 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments/new
   def new
     @enrollment = Enrollment.new
+
+    @courses = Course.all
   end
 
   # GET /enrollments/1/edit
