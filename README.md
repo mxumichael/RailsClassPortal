@@ -1,3 +1,13 @@
+
+
+credentials for the preconfigured admin, instructor and student
+name           ,email              ,password
+Super User     ,admin@admin.com    ,password
+Student User   ,student@ncsu.edu   ,password
+Instructor User,instructor@ncsu.edu,password
+
+
+
 # csc517_program1
 Program 1 (Ruby on Rails) Class Portal
 
