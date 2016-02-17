@@ -34,8 +34,12 @@
         <td><%=course.end_date%></td>
         <td><%=course.status%></td>
         <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.is_admin? || current_user.is_instructor? %>
+            <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <% end %>
+         <% if current_user.is_admin? %>
+             <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <% end %>
         <% if current_user.is_student? %>
           <td>
             <%= form_for(@enrollment) do |f| %>
@@ -49,6 +53,12 @@
             <%end%>
           </td>
         <%end%>
+        <% if current_user.is_admin? || current_user.is_instructor? %>
+          <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <% if current_user.is_admin? %>
+          <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <td><%= link_to 'Grades', grade_view_grade_path, course: @course %></td>
       </tr>
     <% end %>
   </tbody>
