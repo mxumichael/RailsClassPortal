@@ -16,28 +16,29 @@
 <br><br>
 
 <% if !@user.is_admin? %>
-<h3 class="center">Course History</h3>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Number</th>
-    <th>Title</th>
-    <th>Status</th>
-    <th>Grade</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @user.courses.each do |course| %>
+    <h3 class="center">Course History</h3>
+    <table class="table">
+      <thead>
       <tr>
-        <td><%=course.course_number%></td>
-        <td><%=course.title%></td>
-        <td><%=course.status%></td>
-        <td>A</td>
+        <th>Number</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Grade</th>
       </tr>
-  <%end%>
-  </tbody>
-</table>
+      </thead>
+
+      <tbody>
+      <% @user.enrollments.each do |enrollment| %>
+          <tr>
+            <% course = Course.find_by(id: enrollment.course_id)%>
+            <td><%=course.course_number%></td>
+            <td><%=course.title%></td>
+            <td><%=course.status%></td>
+            <td><%=enrollment.grade%></td>
+          </tr>
+      <%end%>
+      </tbody>
+    </table>
 <%end%>
 
 <% if current_user == @user || current_user.is_admin? %>
