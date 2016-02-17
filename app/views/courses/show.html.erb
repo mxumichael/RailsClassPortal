@@ -30,6 +30,34 @@
   <%= @course.status %>
 </p>
 
+<% if !current_user.is_student? %>
+    <h3 class="center">Course Participants</h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Approval</th>
+        <th>Grade</th>
+      </tr>
+      </thead>
 
+      <tbody>
+      <% @course.enrollments.each do |enrollment| %>
+          <% if !enrollment.deny %>
+              <tr>
+                <% user = User.find_by(id: enrollment.user_id)%>
+                <td><%=user.name%></td>
+                <% if enrollment.approve %>
+                    <td>Accepted</td>
+                <% else %>
+                    <td>Pending</td>
+                <%end%>
+                <td><%=enrollment.grade%></td>
+              </tr>
+          <%end%>
+      <%end%>
+      </tbody>
+    </table>
+<%end%>
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
