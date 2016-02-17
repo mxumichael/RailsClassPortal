@@ -56,3 +56,12 @@ end
           password_confirmation: 'password'
   )
 end
+(1..12).each do |i|
+  Courses_user.create!(
+      user_id: i,
+      course_id: i,
+      approve: true,
+      deny: false,
+      grade: 70+2*i
+  )
+end
