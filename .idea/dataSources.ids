@@ -21,17 +21,13 @@
       <column name="updated_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <primary-key columns="id"/>
     </table>
-    <table name="courses_users" schema="" catalog="" type="TABLE">
-      <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="course_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
+    <table name="enrollments" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="user" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
+      <column name="course" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="approve" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="deny" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="grade" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-    </table>
-    <table name="enrollments" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="course_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
     </table>
     <table name="schema_migrations" schema="" catalog="" type="TABLE">
