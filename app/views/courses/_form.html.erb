@@ -35,10 +35,6 @@
       <%= f.label :status %><br>
       <%= f.text_field :status %>
     </div>
-    <div class="field">
-    <%= f.label :users %>
-    <%= select_tag 'class_members', options_from_collection_for_select(User.all, 'id', 'name',@course.users.map{ |j| j.id }), :multiple => true %>
-    </div>
 
   <div class="actions">
     <%= f.submit %>
