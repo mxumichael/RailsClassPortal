@@ -1,5 +1,7 @@
 Csc517Program1::Application.routes.draw do
 
+  resources :courses_users
+
   get "grade/add_grade"
   get "grade/view_grade"
   resources :enrollments
