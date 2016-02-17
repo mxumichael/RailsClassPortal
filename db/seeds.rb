@@ -57,7 +57,7 @@ end
   )
 end
 (1..12).each do |i|
-  Courses_user.create!(
+  Enrollment.create!(
       user_id: i,
       course_id: i,
       approve: true,
