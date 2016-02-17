@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+      @enrollment = Enrollment.new
       @courses = Course.search(params[:query])
   end
 
@@ -25,8 +26,6 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-    @users = User.where(:id => params[:class_members])
-    @course.users << @users
     respond_to do |format|
       if @course.save
         format.html { redirect_to welcome_index_path, notice: 'Course was successfully created.' }
@@ -43,8 +42,6 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        @users = User.where(:id => params[:class_members])
-        @course.users << @users
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else

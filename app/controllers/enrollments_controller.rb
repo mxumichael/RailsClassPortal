@@ -28,7 +28,7 @@ class EnrollmentsController < ApplicationController
 
     respond_to do |format|
       if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+        format.html { redirect_to welcome_index_path, notice: 'Enrollment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @enrollment }
       else
         format.html { render action: 'new' }
@@ -69,6 +69,7 @@ class EnrollmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
-      params[:enrollment]
+      params.require(:enrollment).permit(:user_id, :course_id, :approve, :deny, :grade)
+
     end
 end

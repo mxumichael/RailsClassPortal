@@ -36,7 +36,19 @@
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Grades', grade_view_grade_path, course: @course %></td>
+        <% if current_user.is_student? %>
+          <td>
+            <%= form_for(@enrollment) do |f| %>
+                <%= f.hidden_field :course_id, :value => course.id %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :approve, :value => false %>
+                <%= f.hidden_field :deny, :value => false %>
+                <div class="actions">
+                  <%= f.submit %>
+                </div>
+            <%end%>
+          </td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
