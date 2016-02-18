@@ -19,9 +19,6 @@ Admins may enroll users (instructors & students) in a course from the listed use
 
 Course materials may be added by modifying the description section of a course.
 
-Dates should be in the format:
-mm-dd-yyyy
-
 New courses should have a status of:
 Active
 Inactive
