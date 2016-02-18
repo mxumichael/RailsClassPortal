@@ -41,8 +41,8 @@
       <tbody>
       <% @course.enrollments.each do |enrollment| %>
           <% if !enrollment.deny %>
-              <% user && user = User.find_by(id: enrollment.user_id)%>
-              <% if user.is_student? %>
+              <% user = User.find_by(id: enrollment.user_id)%>
+              <% if user && user.is_student? %>
               <tr>
                 <td><%= link_to user.name, user %></td>
                 <% if enrollment.approve %>
