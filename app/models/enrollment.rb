@@ -8,7 +8,7 @@ class Enrollment < ActiveRecord::Base
     @instructor_enrollments = Enrollment.where('course_id = ?', self.id)
     count = 0
     @instructor_enrollments.each do |enrollment|
-      if enrollment.user.is_instructor
+      if enrollment.user && enrollment.user.is_instructor
         count += 1
       end
     end
