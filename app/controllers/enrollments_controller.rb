@@ -44,7 +44,7 @@ class EnrollmentsController < ApplicationController
   def update
     respond_to do |format|
       if @enrollment.update(enrollment_params)
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
+        format.html { redirect_to course_path(@enrollment.course_id), notice: 'Enrollment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

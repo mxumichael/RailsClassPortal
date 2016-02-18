@@ -35,6 +35,10 @@
       <%= f.label :status %><br>
       <%= f.text_field :status %>
     </div>
+    <div class="field">
+        <%= f.label :instructor %>
+        <%= select_tag :instructor, options_from_collection_for_select(User.where('is_instructor = ?', 't'), 'id', 'name')%>
+    </div>
 
   <div class="actions">
     <%= f.submit %>

@@ -14,9 +14,7 @@
 
       <%end %>
       <%if is_instructor?(current_user) %>
-        <li><%= link_to 'View Enrollment Requests', courses_path %></li>
           <li><%= link_to 'View Courses', courses_path %></li>
-          <li><%= link_to 'Enroll', new_enrollment_path %></li>
 
       <%end%>
       <%if is_student?(current_user) %>

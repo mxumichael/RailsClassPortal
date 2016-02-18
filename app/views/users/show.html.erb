@@ -34,7 +34,7 @@
         <% if !enrollment.deny %>
           <tr>
             <% course = Course.find_by(id: enrollment.course_id)%>
-            <td><%=course.course_number%></td>
+            <td><%= link_to course.course_number, course%></td>
             <td><%=course.title%></td>
             <td><%=course.status%></td>
             <td><%=enrollment.grade%></td>

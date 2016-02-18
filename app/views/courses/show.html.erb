@@ -30,6 +30,31 @@
   <%= @course.status %>
 </p>
 
+<h3 class="center">Course Instructors</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @course.enrollments.each do |enrollment| %>
+      <% if !enrollment.deny %>
+          <% user = User.find_by(id: enrollment.user_id)%>
+          <% if user.is_instructor? %>
+            <tr>
+              <td><%=user.name%></td>
+              <%if current_user.is_admin? && enrollment.multiple_instructors?%>
+                <td><%= link_to 'Remove', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <%end%>
+            </tr>
+          <%end%>
+      <%end%>
+  <%end%>
+  </tbody>
+</table>
+
 <% if !current_user.is_student? %>
     <h3 class="center">Course Participants</h3>
     <table class="table">
@@ -44,25 +69,26 @@
       <tbody>
       <% @course.enrollments.each do |enrollment| %>
           <% if !enrollment.deny %>
+              <% user = User.find_by(id: enrollment.user_id)%>
+              <% if user.is_student? %>
               <tr>
-                <% user = User.find_by(id: enrollment.user_id)%>
-                <td><%=user.name%></td>
+                <td><%= link_to user.name, user %></td>
                 <% if enrollment.approve %>
                     <td>Accepted</td>
                 <% else %>
-                  <td>
-                    <%= form_for(enrollment) do |f| %>
-                    <%= f.hidden_field :approve, :value => true %>
-                    <div class="actions">
-                    <%= f.submit :Approve %>
-                    </div>
-                  </td>
-                    <%end%>
+                    <td>
+                      <%= form_for(enrollment) do |f| %>
+                        <%= f.hidden_field :approve, :value => true %>
+                        <div class="actions">
+                          <%= f.submit :Approve %>
+                        </div>
+                      <%end%>
+                    </td>
                 <%end%>
                 <td><%=enrollment.grade%></td>
-
                 <td><%= link_to 'Remove', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
+              <%end%>
           <%end%>
       <%end%>
       </tbody>

@@ -25,7 +25,7 @@ User.create!(
         password_confirmation: 'password'
 )
 
-User.create!(
+@instructor = User.create!(
         name: 'Instructor User',
         email: 'instructor@ncsu.edu',
         is_student: false,
@@ -36,12 +36,19 @@ User.create!(
 )
 
 (100..115).each do |i|
-  Course.create!(
+  course = Course.create!(
             course_number: i,
             title: 'Course ' + i.to_s,
             start_date: Date.parse((i-99).to_s + '-01-2016'),
             end_date: Date.parse((i-99).to_s + '-05-2016'),
-            status: 'Active'
+            status: 'Active',
+  )
+
+  Enrollment.create!(
+                user_id: @instructor.id,
+                course_id: course.id,
+                approve: true,
+                deny: false
   )
 end
 
@@ -56,7 +63,7 @@ end
           password_confirmation: 'password'
   )
 end
-(1..12).each do |i|
+(4..16).each do |i|
   Enrollment.create!(
       user_id: i,
       course_id: i,
