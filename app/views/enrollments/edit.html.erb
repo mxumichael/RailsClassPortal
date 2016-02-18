@@ -18,14 +18,12 @@
       <%= f.collection_select(:course_id, Course.all, :id, :title, {} ) %>
     </div>-->
 
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :grade %>
       <%= f.text_field :grade %>
     </div>
-    <div class="actions">
+    <div class="form-group center actions">
       <%= f.submit %>
     </div>
 <% end %>
 
-<%= link_to 'Show', @enrollment %> |
-<%= link_to 'Back', enrollments_path %>

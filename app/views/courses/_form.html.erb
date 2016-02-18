@@ -11,36 +11,36 @@
     </div>
   <% end %>
 
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :course_number %><br>
       <%= f.text_field :course_number %>
     </div>
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :title %><br>
       <%= f.text_field :title %>
     </div>
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :description %><br>
       <%= f.text_field :description %>
     </div>
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :start_date %><br>
       <%= f.text_field :start_date %>
     </div>
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :end_date %><br>
       <%= f.text_field :end_date %>
     </div>
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :status %><br>
       <%= f.text_field :status %>
     </div>
-    <div class="field">
+    <div class="form-group center field">
         <%= f.label :instructor %>
         <%= select_tag :instructor, options_from_collection_for_select(User.where('is_instructor = ?', 't'), 'id', 'name')%>
     </div>
 
-  <div class="actions">
+  <div class="form-group center actions">
     <%= f.submit %>
   </div>
 <% end %>

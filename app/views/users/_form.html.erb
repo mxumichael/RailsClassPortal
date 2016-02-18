@@ -11,20 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group center field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-group center field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
   <% if !logged_in? || current_user.is_admin? %>
-  <div class="field">
+  <div class="form-group center field">
     <%= f.label :password %><br>
     <%= f.password_field :password %>
   </div>
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :password_confirmation %><br>
       <%= f.password_field :password_confirmation %>
     </div>
@@ -45,7 +45,8 @@
       <%= f.hidden_field :is_student, :value => false %>
       <%= f.hidden_field :is_instructor, :value => true %>
   <% end %>
-  <div class="actions">
+    <br>
+  <div class="form-group center actions">
     <%= f.submit %>
   </div>
 <% end %>

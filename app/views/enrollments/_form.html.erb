@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-    <div class="field">
+    <div class="form-group center field">
       <%= f.label :course_number %><br>
       <%= f.collection_select(:course_id, Course.all, :id, :title, {} ) %>
     </div>
@@ -20,7 +20,7 @@
     <%= f.hidden_field :deny, :value => false %>
     <%= f.hidden_field :user_id, :value => params[:user]%>
 
-  <div class="actions">
+  <div class="form-group center actions">
     <%= f.submit %>
   </div>
 <% end %>
