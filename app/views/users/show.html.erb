@@ -58,7 +58,6 @@
 <%end%>
 
 <% if current_user == @user || current_user.is_admin? %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
+  <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default pull-right'%>
 <% end %>
-<br>
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path, class: 'btn btn-default pull-right' %>

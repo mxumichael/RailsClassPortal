@@ -3,6 +3,7 @@
 <div class="center">
 <%= form_tag courses_path, :method => 'get' do %>
     <p>
+      Course Number:
       <%= text_field_tag :query, params[:query] %>
       <%= submit_tag 'Search', :course_number => nil %>
     </p>
@@ -27,18 +28,18 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%=course.course_number%></td>
+        <td><%=link_to course.course_number, course%></td>
         <td><%=course.title%></td>
         <td><%=course.description%></td>
         <td><%=course.start_date%></td>
         <td><%=course.end_date%></td>
         <td><%=course.status%></td>
-        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Show', course, class: 'btn btn-default' %></td>
         <% if current_user.is_admin? || current_user.is_instructor? %>
-            <td><%= link_to 'Edit', edit_course_path(course) %></td>
+            <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-default' %></td>
         <% end %>
          <% if current_user.is_admin? %>
-             <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+             <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %></td>
          <% end %>
         <% if current_user.is_student? %>
           <td>
