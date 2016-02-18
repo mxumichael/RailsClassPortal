@@ -1,4 +1,19 @@
-<h1>Listing users</h1>
+<%
+  if params[:role] == 'admin'
+    user_list = User.where('is_admin = ?', 't')
+  elsif params[:role] == 'instructor'
+    user_list = User.where('is_instructor = ?', 't')
+  elsif params[:role] == 'student'
+    user_list = User.where('is_student = ?', 't')
+  else
+    user_list = @users
+  end%>
+
+<%if params[:role] %>
+    <h1>Listing <%=params[:role]%>s</h1>
+<% else %>
+    <h1>Listing all users</h1>
+<% end %>
 
 <table class="table table-striped table-hover">
   <thead>
@@ -13,13 +28,15 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+
+
+    <% user_list.each do |user| %>
       <tr>
         <td><%=link_to user.name, user %></td>
         <td><%= user.email %></td>
-        <% if user.is_student %>
+        <% if user.is_student? %>
             <% role = 'Student' %>
-        <% elsif user.is_instructor %>
+        <% elsif user.is_instructor? %>
             <% role = 'Instructor' %>
         <% else %>
             <% role = 'Admin' %>

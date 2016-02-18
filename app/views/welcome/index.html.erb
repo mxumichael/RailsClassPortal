@@ -7,7 +7,10 @@
     <%if is_admin?(current_user) %>
          <li class="list-group-item"><%= link_to 'Add Admin', new_user_path(role: 'admin') %></li>
           <li class="list-group-item"><%= link_to 'Add Instructor', new_user_path(role: 'instructor') %></li>
-          <li class="list-group-item"><%= link_to 'View Users', users_path %></li>
+          <li class="list-group-item"><%= link_to 'View All Users', users_path %></li>
+          <li class="list-group-item"><%= link_to 'View Students', users_path(role: 'student') %></li>
+          <li class="list-group-item"><%= link_to 'View Admins', users_path(role: 'admin') %></li>
+          <li class="list-group-item"><%= link_to 'View Instructors', users_path(role: 'instructor') %></li>
           <li class="list-group-item"><%= link_to 'Add Course', new_course_path%></li>
           <li class="list-group-item"><%= link_to 'View Courses', courses_path%></li>
 
