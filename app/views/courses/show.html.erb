@@ -50,9 +50,17 @@
                 <% if enrollment.approve %>
                     <td>Accepted</td>
                 <% else %>
-                    <td>Pending</td>
+                  <td>
+                    <%= form_for(enrollment) do |f| %>
+                    <%= f.hidden_field :approve, :value => true %>
+                    <div class="actions">
+                    <%= f.submit %>
+                    </div>
+                  </td>
+                    <%end%>
                 <%end%>
                 <td><%=enrollment.grade%></td>
+
                 <td><%= link_to 'Remove', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
           <%end%>
