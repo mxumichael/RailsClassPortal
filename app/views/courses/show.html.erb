@@ -83,6 +83,8 @@
                         <div class="actions" style="display: inline">
                           <%= f.submit :Approve %>
                         </div>
+                      <%end%>
+                      <%= form_for(enrollment) do |f| %>
                           <%= f.hidden_field :approve, :value => false %>
                           <%= f.hidden_field :deny, :value => true %>
                         <div class="actions" style="display: inline">
