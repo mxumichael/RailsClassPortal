@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-<!--    <div class="field">
+    <div class="field">
       <%= f.label :course_number %><br>
       <%= f.collection_select(:course_id, Course.all, :id, :title, {} ) %>
-    </div>-->
+    </div>
 
-  <div class="field">
-    <%= f.label :grade %>
-    <%= f.text_field :grade %>
-  </div>
+    <%= f.hidden_field :approve, :value => true %>
+    <%= f.hidden_field :deny, :value => false %>
+    <%= f.hidden_field :user_id, :value => params[:user]%>
+
   <div class="actions">
     <%= f.submit %>
   </div>

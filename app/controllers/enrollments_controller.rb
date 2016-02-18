@@ -16,7 +16,6 @@ class EnrollmentsController < ApplicationController
   def new
     @enrollment = Enrollment.new
 
-    @courses = Course.all
   end
 
   # GET /enrollments/1/edit
