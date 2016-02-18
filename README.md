@@ -10,6 +10,8 @@ Credentials for the preconfigured admin, instructor and student
 | Instructor | instructor@ncsu.edu | "password" | 
 | Student    | student@ncsu.edu    | "password" | 
 
+User's course history and a course's participants are available under the individual user or course page.
+
 Dates should be in the format:
 mm-dd-yyyy
 
