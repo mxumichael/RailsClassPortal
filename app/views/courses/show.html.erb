@@ -78,9 +78,15 @@
                 <% else %>
                     <td>
                       <%= form_for(enrollment) do |f| %>
-                        <%= f.hidden_field :approve, :value => true %>
-                        <div class="actions">
+                          <%= f.hidden_field :approve, :value => true %>
+                          <%= f.hidden_field :deny, :value => false %>
+                        <div class="actions" style="display: inline">
                           <%= f.submit :Approve %>
+                        </div>
+                          <%= f.hidden_field :approve, :value => false %>
+                          <%= f.hidden_field :deny, :value => true %>
+                        <div class="actions" style="display: inline">
+                          <%= f.submit :Deny %>
                         </div>
                       <%end%>
                     </td>
