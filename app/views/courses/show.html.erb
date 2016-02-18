@@ -17,7 +17,7 @@
           <% if user && user.is_instructor? %>
             <tr>
               <td><%=user.name%></td>
-              <%if current_user.is_admin? && enrollment.multiple_instructors?%>
+              <%if current_user.is_admin? && Enrollment.multiple_instructors?(@course.id)%>
                 <td><%= link_to 'Remove', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <%end%>
             </tr>

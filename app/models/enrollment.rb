@@ -4,11 +4,11 @@ class Enrollment < ActiveRecord::Base
 
   validates_uniqueness_of :user_id, :scope => :course_id
 
-  def multiple_instructors?
-    @instructor_enrollments = Enrollment.where('course_id = ?', self.id)
+  def self.multiple_instructors?(id)
+    instructor_enrollments = Enrollment.where('course_id = ?', id)
     count = 0
-    @instructor_enrollments.each do |enrollment|
-      if enrollment.user && enrollment.user.is_instructor
+    instructor_enrollments.each do |enrollment|
+      if enrollment.user && enrollment.user.is_instructor?
         count += 1
       end
     end
