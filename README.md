@@ -1,6 +1,8 @@
 
+Server:
+http://54.191.201.61:3000/
 
-credentials for the preconfigured admin, instructor and student
+Credentials for the preconfigured admin, instructor and student
 
 | Name       | Email               | Password   |
 |------------|---------------------|------------|
