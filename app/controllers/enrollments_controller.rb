@@ -56,9 +56,14 @@ class EnrollmentsController < ApplicationController
   # DELETE /enrollments/1
   # DELETE /enrollments/1.json
   def destroy
+    course_id = @enrollment.course_id
     @enrollment.destroy
     respond_to do |format|
-      format.html { redirect_to enrollments_url }
+      if current_user.is_student?
+        format.html { redirect_to user_path(current_user) }
+      else
+        format.html { redirect_to course_path(course_id)}
+      end
       format.json { head :no_content }
     end
   end

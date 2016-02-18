@@ -25,6 +25,7 @@
         <th>Status</th>
         <th>Grade</th>
         <th>Enrollment</th>
+        <th></th>
       </tr>
       </thead>
 
@@ -42,6 +43,9 @@
             <% else %>
               <td>Pending</td>
             <%end%>
+            <% if current_user.is_student? %>
+              <td><%= link_to 'Drop Course', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
         <%end%>
       <%end%>

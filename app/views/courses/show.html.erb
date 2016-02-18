@@ -53,6 +53,7 @@
                     <td>Pending</td>
                 <%end%>
                 <td><%=enrollment.grade%></td>
+                <td><%= link_to 'Remove', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
           <%end%>
       <%end%>
