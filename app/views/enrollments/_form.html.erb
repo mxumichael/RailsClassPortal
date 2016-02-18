@@ -14,9 +14,13 @@
 <!--    <div class="field">
       <%= f.label :course_number %><br>
       <%= f.collection_select(:course_id, Course.all, :id, :title, {} ) %>
-    </div>
+    </div>-->
+
+  <div class="field">
+    <%= f.label :grade %>
+    <%= f.text_field :grade %>
+  </div>
   <div class="actions">
--->
     <%= f.submit %>
   </div>
 <% end %>

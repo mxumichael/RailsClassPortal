@@ -91,7 +91,11 @@
                       <%end%>
                     </td>
                 <%end%>
-                <td><%=enrollment.grade%></td>
+                <% if enrollment.grade.blank? %>
+                  <td><%= link_to 'Post Grade', edit_enrollment_path(enrollment) %></td>
+                <% else %>
+                  <td><%=enrollment.grade%></td>
+                <%end%>
                 <td><%= link_to 'Remove', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
               <%end%>
