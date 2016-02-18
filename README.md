@@ -15,6 +15,10 @@ User's course history and a course's participants are available under the indivi
 
 Many actions for Instructors / Admins are available under other user's profile E.G. Admin modification of students and instructors. Student removal under that course's page.
 
+Admins may enroll users (instructors & students) in a course from the listed users page. 
+
+Course materials may be added by modifying the description section of a course.
+
 Dates should be in the format:
 mm-dd-yyyy
 
