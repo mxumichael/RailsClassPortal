@@ -17,7 +17,7 @@ Many actions for Instructors / Admins are available under other user's profile E
 
 Admins may enroll users (instructors & students) in a course from the listed users page. 
 
-Course materials may be added by modifying the description section of a course.
+Course materials may be added to a course from the indivudal course's page
 
 New courses should have a status of:
 Active
