@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
   has_many :enrollments
+  has_many :materials
   validates :course_number, :title, :start_date, :end_date, :status, presence: true
 
   def self.search(query)

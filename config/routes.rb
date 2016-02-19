@@ -1,5 +1,7 @@
 Csc517Program1::Application.routes.draw do
 
+  resources :materials
+
   resources :enrollments
 
   get "grade/add_grade"
@@ -18,6 +20,10 @@ Csc517Program1::Application.routes.draw do
   resources :courses
 
   resources :users
+
+  resources :materials
+
+  resources :enrollments
 
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.

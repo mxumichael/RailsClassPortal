@@ -3,9 +3,29 @@
 <h1 class="center"><%=@course.course_number%>: <%=@course.title%></h1>
 <h2 class="center"><%= @course.start_date%> - <%= @course.end_date%></h2>
 <h2 class="center"><%=@course.status%></h2>
-
-<h3 class="center">Course Materials</h3>
 <p class="center"><%= @course.description%></p>
+<h3 class="center">Course Materials</h3>
+<table class="table table-striped">
+  <thead>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th></th>
+  </thead>
+
+  <tbody>
+    <% @course.materials.each do |material|%>
+    <tr>
+      <td><%= material.category%></td>
+      <td><%= material.title%></td>
+      <td><%= material.description%></td>
+      <% if !current_user.is_student? %>
+        <td><%= link_to 'Remove', material, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'%></td>
+      <%end%>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
 
 <h3 class="center">Course Instructors</h3>
 <table class="table table-striped center col-md-4">
@@ -77,6 +97,9 @@
       <%end%>
       </tbody>
     </table>
+<%end%>
+<%if !current_user.is_student? %>
+  <%=link_to 'Add Material', new_material_path(course: @course.id), class: 'btn btn-primary pull-right'%>
 <%end%>
 <%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-default pull-right' %> |
 <%= link_to 'Back', courses_path, class: 'btn btn-default pull-right' %>
