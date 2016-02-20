@@ -3,9 +3,11 @@
 one:
   title: MyString
   description: MyString
-  type: 
+  category: MyString
+  course_id: 1
 
 two:
   title: MyString
   description: MyString
-  type: 
+  category: MyString
+  course_id: 2

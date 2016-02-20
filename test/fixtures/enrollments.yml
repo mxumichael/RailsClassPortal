@@ -1,9 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user: MyString
-  class: MyString
+  user_id: 1
+  course_id: 1
+  approve: 1
+  deny: 0
+  grade: 90
 
 two:
-  user: MyString
-  class: MyString
+  user_id: 1
+  course_id: 1
+  approve: 0
+  deny: 0
+  grade: 0
+
+two:
+  user_id: 1
+  course_id: 1
+  approve: 0
+  deny: 1
+  grade: 0
