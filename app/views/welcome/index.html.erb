@@ -4,7 +4,7 @@
       <h1>Welcome <%=current_user.name%></h1>
       <ul class="list-group">
         <li class="list-group-item"><%=link_to'Profile', user_path(@current_user)%></li>
-    <%if is_admin?(current_user) %>
+    <%if current_user.is_a? Admin %>
          <li class="list-group-item"><%= link_to 'Add Admin', new_user_path(role: 'admin') %></li>
           <li class="list-group-item"><%= link_to 'Add Instructor', new_user_path(role: 'instructor') %></li>
           <li class="list-group-item"><%= link_to 'View All Users', users_path %></li>

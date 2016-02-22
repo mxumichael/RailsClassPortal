@@ -19,7 +19,7 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
-  <% if !logged_in? || current_user.is_admin? %>
+  <% if !logged_in? || (current_user.is_a? Admin)%>
   <div class="form-group center field">
     <%= f.label :password %><br>
     <%= f.password_field :password %>
