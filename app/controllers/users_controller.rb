@@ -25,8 +25,13 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
+    if params[:is_admin]
+      @user = Admin.new(user_params)
+    elsif params[:is_instructor]
+      @user = Instructor.new(user_params)
+    else
+      @user = Student.new(user_params)
+    end
     respond_to do |format|
       if @user.save
         if !logged_in?
