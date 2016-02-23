@@ -112,3 +112,16 @@ footer ul li {
     float: left;
     margin-left: 15px;
 }
+
+.odd{
+    background-color: #f6f6f6;
+}
+.even{
+    background-color: #ffffff;
+}
+.node:hover{
+    background-color: #e3e3e3;
+}
+.node:active{
+    background-color: #aaaaaa;
+}

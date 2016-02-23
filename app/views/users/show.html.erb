@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <h1 class="center"><%= @user.name%></h1>
 <h3 class="center"><%=@user.email%></h3>
 
@@ -14,7 +13,6 @@
 <%end%>
 
 <br><br>
-
 <% if !@user.is_a? Admin %>
     <h3 class="center">Course History</h3>
     <table class="table table-striped table-hover">
@@ -31,27 +29,24 @@
 
       <tbody>
       <% @user.enrollments.each do |enrollment| %>
-        <% if !enrollment.deny %>
-          <tr>
-            <% course = Course.find_by(id: enrollment.course_id)%>
-            <td><%= link_to course.course_number, course%></td>
-            <td><%=course.title%></td>
-            <td><%=course.status%></td>
-            <td><%=enrollment.grade%></td>
-            <% if enrollment.approve %>
-              <% if @user.is_a? Instructor %>
-                <td>Instructor</td>
-              <% else %>
-                <td>Accepted</td>
-              <% end %>
-            <% else %>
-              <td>Pending</td>
-            <%end%>
-            <% if current_user.is_a? Student %>
-              <td><%= link_to 'Drop Course', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-          </tr>
-        <% end %>
+          <% if !enrollment.deny %>
+              <tr>
+                <% course = Course.find_by(id: enrollment.course_id)%>
+                <td><%= link_to course.course_number, course%></td>
+                <td><%=course.title%></td>
+                <td><%=course.status%></td>
+                <td><%=enrollment.grade%></td>
+                <% if @user.is_a? Instructor %>
+                    <td>Instructor</td>
+                <% else if enrollment.approve %>
+                        <td>Accepted</td>
+                    <% else %>
+                        <td>Pending</td>
+                    <% end %>
+                    <td><%= link_to 'Drop Course', enrollment, class: 'btn btn-default', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+              </tr>
+          <% end %>
       <%end%>
       </tbody>
     </table>
