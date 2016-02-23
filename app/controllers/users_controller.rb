@@ -25,9 +25,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    if params[:is_admin]
+    if (params[:user_role] == 'admin')
       @user = Admin.new(user_params)
-    elsif params[:is_instructor]
+    elsif (params[:user_role] == 'instructor')
       @user = Instructor.new(user_params)
     else
       @user = Student.new(user_params)
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_student, :is_admin, :is_instructor)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_role)
     end
 
   def enroll
