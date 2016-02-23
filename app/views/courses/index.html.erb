@@ -1,13 +1,12 @@
 <h1>Course List</h1>
-
 <div class="center">
-<%= form_tag courses_path, :method => 'get' do %>
-    <p>
-      Course Number:
-      <%= text_field_tag :query, params[:query] %>
-      <%= submit_tag 'Search', :course_number => nil %>
-    </p>
-<% end %>
+  <%= form_tag courses_path, :method => 'get' do %>
+      <p>
+        Course Number:
+        <%= text_field_tag :query, params[:query] %>
+        <%= submit_tag 'Search', :course_number => nil %>
+      </p>
+  <% end %>
 </div>
 
 <table class="table table-striped table-hover">

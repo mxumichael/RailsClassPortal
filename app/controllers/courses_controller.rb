@@ -5,7 +5,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
       @enrollment = Enrollment.new
-      @courses = Course.search(params[:query])
+      @courses = Course.where(
+          "course_number LIKE (?) OR title LIKE (?)",
+          "%#{params[:query]}%",
+          "%#{params[:query]}%")
   end
 
   # GET /courses/1
