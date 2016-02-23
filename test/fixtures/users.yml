@@ -3,57 +3,36 @@
 one:
   name: Michael Xu
   email: mxu@ncsu.edu
-  is_student: true
-  is_instructor: false
+  type: Student
   #password: 'password'
   #password_confirmation: 'password'
 
-two:
-  name: Brandon Hagar
-  email: bhagar@ncsu.edu
-  is_student: true
-  is_instructor: false
-  #password: 'password'
-  #password_confirmation: 'password'
+#two:
+#  name: Brandon Hagar
+#  email: bhagar@ncsu.edu
+#  type: Student
+#  #password: 'password'
+#  #password_confirmation: 'password'
+#
+#three:
+#  name: Michael Goff
+#  email: mgoff@ncsu.edu
+#  type: Student
+#  #password: 'password'
+#  #password_confirmation: 'password'
+#
+#four:
+#  name: Edward Gehringer
+#  email: egehringer@ncsu.edu
+#  type: Instructor
+#  #password: 'password'
+#  #password_confirmation: 'password'
+#
+#five:
+#  name: McAdmin
+#  email: McAdmin@ncsu.edu
+#  type: Admin
+#  #password: 'password'
+#  #password_confirmation: 'password'
 
-three:
-  name: Michael Goff
-  email: mgoff@ncsu.edu
-  is_student: true
-  is_instructor: false
-  #password: 'password'
-  #password_confirmation: 'password'
 
-four:
-  name: Edward Gehringer
-  email: egehringer@ncsu.edu
-  is_student: false
-  is_instructor: true
-  #password: 'password'
-  #password_confirmation: 'password'
-
-
-#<% (1..10).each do |n| %> #generating 10 students
-#user_<%= n %>:
-#  name: <%= "user#{n}" %>
-#  email: <%= "user#{n}@example.com" %>
-#  is_student: true
-#  is_admin: false
-#  is_instructor: false
-#<% end %>
-#<% (11..20).each do |n| %> #generating 10 admins
-#user_<%= n %>:
-#  name: <%= "user#{n}" %>
-#  email: <%= "user#{n}@example.com" %>
-#  is_student: false
-#  is_admin: true
-#  is_instructor: false
-#<% end %>
-#<% (21..30).each do |n| %> #generating 10 instructors
-#user_<%= n %>:
-#  name: <%= "user#{n}" %>
-#  email: <%= "user#{n}@example.com" %>
-#  is_student: false
-#  is_admin: false
-#  is_instructor: true
-#<% end %>
