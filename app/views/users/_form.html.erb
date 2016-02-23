@@ -29,8 +29,7 @@
       <%= f.password_field :password_confirmation %>
     </div>
   <%end%>
-
-    <%= f.hidden_field :user_role, :value => params[:role] %>
+    <%= f.hidden_field :type, :value => params[:role] %>
     <br>
   <div class="form-group center actions">
     <%= f.submit %>

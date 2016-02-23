@@ -4,8 +4,8 @@
       <div class="btn-group-vertical">
         <%=link_to'Profile', user_path(@current_user), class: 'btn btn-default' %></li>
         <%if current_user.is_a? Admin %>
-            <%= link_to 'Add Admin', new_user_path(role: 'admin'), class: 'btn btn-default'  %></li>
-            <%= link_to 'Add Instructor', new_user_path(role: 'instructor'), class: 'btn btn-default'  %></li>
+            <%= link_to 'Add Admin', new_user_path(role: 'Admin'), class: 'btn btn-default'  %></li>
+            <%= link_to 'Add Instructor', new_user_path(role: 'Instructor'), class: 'btn btn-default'  %></li>
             <%= link_to 'View All Users', users_path, class: 'btn btn-default'  %></li>
             <%= link_to 'View Students', users_path(role: 'student'), class: 'btn btn-default'  %></li>
             <%= link_to 'View Admins', users_path(role: 'admin'), class: 'btn btn-default'  %></li>
@@ -23,6 +23,6 @@
   <%else%>
       <h1>Welcome to the app!</h1>
       <h2>This is the home page for the Course Portal Application</h2>
-      <%= link_to 'Sign Up', new_user_path(role: 'student'), class: 'btn btn-lg btn-primary' %>
+      <%= link_to 'Sign Up', new_user_path(role: 'Student'), class: 'btn btn-lg btn-primary' %>
   <%end%>
 </div>
