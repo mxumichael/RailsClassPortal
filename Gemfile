@@ -39,6 +39,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bcrypt', '~> 3.1.5' #needed for windows.
 
 gem 'faker'
+gem 'jquery-turbolinks'
 
 
 # Use unicorn as the app server

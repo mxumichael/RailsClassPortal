@@ -11,12 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
-jQuery(function($) {
-    $('tr[data-link]').click(function() {
-        window.location = this.dataset.link
+jQuery(document).ready(function() {
+    jQuery(function ($) {
+        $('tr[data-link]').click(function () {
+            window.location = this.dataset.link
+        });
     });
 });
