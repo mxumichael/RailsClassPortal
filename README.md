@@ -10,7 +10,8 @@ Credentials for the preconfigured admin, instructor and student
 | Instructor | instructor@ncsu.edu | "password" | 
 | Student    | student@ncsu.edu    | "password" | 
 
-User's course history and a course's participants are available under the individual user or course page.
+Student's course history and a course's participants are available under the individual user or course page.
+Students may request enrollment in a course from the courses page
 
 
 Many actions for Instructors / Admins are available under other user's profile E.G. Admin modification of students and instructors. Student removal under that course's page.
