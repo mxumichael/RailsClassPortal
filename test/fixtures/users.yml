@@ -4,29 +4,33 @@ one:
   name: Michael Xu
   email: mxu@ncsu.edu
   is_student: true
-  is_admin: false
-  is_instructor: true
+  is_instructor: false
+  #password: 'password'
+  #password_confirmation: 'password'
 
 two:
   name: Brandon Hagar
   email: bhagar@ncsu.edu
   is_student: true
-  is_admin: false
-  is_instructor: true
+  is_instructor: false
+  #password: 'password'
+  #password_confirmation: 'password'
 
 three:
   name: Michael Goff
   email: mgoff@ncsu.edu
-  is_student: false
-  is_admin: true
+  is_student: true
   is_instructor: false
+  #password: 'password'
+  #password_confirmation: 'password'
 
 four:
   name: Edward Gehringer
   email: egehringer@ncsu.edu
   is_student: false
-  is_admin: false
   is_instructor: true
+  #password: 'password'
+  #password_confirmation: 'password'
 
 
 #<% (1..10).each do |n| %> #generating 10 students
