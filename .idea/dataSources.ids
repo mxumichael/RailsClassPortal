@@ -4,6 +4,11 @@
     <database-info product="SQLite" version="3.8.9" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
     <schema name="" catalog=""/>
+  </data-source>
+  <data-source name="Rails csc517_program1: development" uuid="35d3c499-a27e-45ab-b981-ae2d62a23ca0">
+    <database-info product="SQLite" version="3.8.9" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <schema name="" catalog=""/>
     <table name="courses" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="course_number" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
@@ -47,64 +52,7 @@
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="email" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="is_student" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="is_admin" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="is_instructor" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="created_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="password_digest" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-  </data-source>
-  <data-source name="Rails csc517_program1: development" uuid="35d3c499-a27e-45ab-b981-ae2d62a23ca0">
-    <database-info product="SQLite" version="3.8.9" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
-    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
-    <schema name="" catalog=""/>
-    <table name="courses" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="course_number" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="title" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="description" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="start_date" sqlType="DATE" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="end_date" sqlType="DATE" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="status" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="created_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="enrollments" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="course_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="approve" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="deny" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="grade" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="materials" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="title" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="description" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="type" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="created_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="updated_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="schema_migrations" schema="" catalog="" type="TABLE">
-      <column name="version" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <index name="unique_schema_migrations" unique="true" columns="version"/>
-    </table>
-    <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
-      <column name="name" sqlType="" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="seq" sqlType="" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-    </table>
-    <table name="users" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="email" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
-      <column name="is_student" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="is_admin" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <column name="is_instructor" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="created_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="updated_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="password_digest" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
