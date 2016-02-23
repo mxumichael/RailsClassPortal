@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(version: 20160219182308) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.boolean  "is_student"
-    t.boolean  "is_instructor"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

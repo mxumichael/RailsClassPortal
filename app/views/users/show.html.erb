@@ -3,10 +3,10 @@
 <h1 class="center"><%= @user.name%></h1>
 <h3 class="center"><%=@user.email%></h3>
 
-<% if @user.is_student? %>
+<% if @user.is_a? Student %>
     <h4 class="center">Student</h4>
 <%end%>
-<% if @user.is_instructor? %>
+<% if @user.is_a? Instructor %>
     <h4 class="center">Instructor</h4>
 <%end%>
 <% if @user.is_a? Admin %>
@@ -39,7 +39,7 @@
             <td><%=course.status%></td>
             <td><%=enrollment.grade%></td>
             <% if enrollment.approve %>
-              <% if @user.is_instructor? %>
+              <% if @user.is_a? Instructor %>
                 <td>Instructor</td>
               <% else %>
                 <td>Accepted</td>
@@ -47,7 +47,7 @@
             <% else %>
               <td>Pending</td>
             <%end%>
-            <% if current_user.is_student? %>
+            <% if current_user.is_a? Student %>
               <td><%= link_to 'Drop Course', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
           </tr>
@@ -60,4 +60,4 @@
 <% if current_user == @user || (current_user.is_a? Admin) %>
   <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default pull-right'%>
 <% end %>
-<%= link_to 'Back', users_path, class: 'btn btn-default pull-right' %>
+<%= link_to_function "Back", "history.back()", class: 'btn btn-default pull-right' %>

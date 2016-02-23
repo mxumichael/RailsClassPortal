@@ -1,10 +1,10 @@
 <%
   if params[:role] == 'admin'
-    user_list = User.where('is_admin = ?', 't')
+    user_list = User.where("type = 'Admin'")
   elsif params[:role] == 'instructor'
-    user_list = User.where('is_instructor = ?', 't')
+    user_list = User.where("type = 'Instructor'")
   elsif params[:role] == 'student'
-    user_list = User.where('is_student = ?', 't')
+    user_list = User.where("type = 'Student'")
   else
     user_list = @users
   end%>
@@ -34,9 +34,9 @@
       <tr>
         <td><%=link_to user.name, user %></td>
         <td><%= user.email %></td>
-        <% if user.is_student? %>
+        <% if user.is_a? Student %>
             <% role = 'Student' %>
-        <% elsif user.is_instructor? %>
+        <% elsif user.is_a? Instructor %>
             <% role = 'Instructor' %>
         <% else %>
             <% role = 'Admin' %>
@@ -47,7 +47,7 @@
         <% if ((current_user.is_a? Admin) && current_user != user) && user.email != 'admin@admin.com' %>
           <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         <% end %>
-        <% if (current_user.is_a? Admin) && (!user.is_a? Admin) %>
+        <% if (current_user.is_a? Admin) && !(user.is_a? Admin) %>
           <td><%=link_to 'Enroll', new_enrollment_path(user: user.id), class: 'btn btn-primary btn-sm' %></td>
         <%end%>
       </tr>

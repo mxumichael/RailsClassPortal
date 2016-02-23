@@ -9,26 +9,20 @@
 @Admin = User.create!(
     name: 'Super User',
     email: 'admin@admin.com',
-    is_student: false,
-    is_instructor: false,
     password: 'password',
     password_confirmation: 'password'
 )
 
-User.create!(
+Student.create!(
         name: 'Student User',
         email: 'student@ncsu.edu',
-        is_student: true,
-        is_instructor: false,
         password: 'password',
         password_confirmation: 'password'
 )
 
-@instructor = User.create!(
+@instructor = Instructor.create!(
         name: 'Instructor User',
         email: 'instructor@ncsu.edu',
-        is_student: false,
-        is_instructor: true,
         password: 'password',
         password_confirmation: 'password'
 )
@@ -51,11 +45,9 @@ User.create!(
 end
 
 10.times do
-  User.create!(
+  Student.create!(
           name: Faker::Name.name,
           email: Faker::Internet.email,
-          is_student: true,
-          is_instructor: false,
           password: 'password',
           password_confirmation: 'password'
   )

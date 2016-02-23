@@ -58,7 +58,7 @@ class EnrollmentsController < ApplicationController
     course_id = @enrollment.course_id
     @enrollment.destroy
     respond_to do |format|
-      if current_user.is_student?
+      if current_user.is_a? Student
         format.html { redirect_to user_path(current_user) }
       else
         format.html { redirect_to course_path(course_id)}

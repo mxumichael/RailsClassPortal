@@ -30,21 +30,6 @@
     </div>
   <%end%>
 
-  <% if params[:role] == 'admin' %>
-        <%= f.hidden_field :is_admin, :value => true %>
-        <%= f.hidden_field :is_student, :value => false %>
-        <%= f.hidden_field :is_instructor, :value => false %>
-  <% end %>
-  <% if params[:role] == 'student' %>
-      <%= f.hidden_field :is_admin, :value => false %>
-      <%= f.hidden_field :is_student, :value => true %>
-      <%= f.hidden_field :is_instructor, :value => false %>
-  <% end %>
-  <% if params[:role] == 'instructor' %>
-      <%= f.hidden_field :is_admin, :value => false %>
-      <%= f.hidden_field :is_student, :value => false %>
-      <%= f.hidden_field :is_instructor, :value => true %>
-  <% end %>
     <br>
   <div class="form-group center actions">
     <%= f.submit %>
