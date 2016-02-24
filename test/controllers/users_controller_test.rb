@@ -23,6 +23,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to welcome_index_path
   end
 
+  test "create user blank email should fail" do
+    assert_no_difference('User.count') do
+      post :create, user: { name: @user.name, email: '', type: @user.type, password: 'password', password_confirmation: 'password'}
+    end
+    assert_response 200 #would actually expect this to give an error status of some sort?
+  end
+
   test "create user duplicate email should fail" do
     assert_no_difference('User.count') do
       post :create, user: { name: @user.name, email: @user.email, type: @user.type, password: 'password', password_confirmation: 'password'}

@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1420434111">
-    <data-source source="LOCAL" name="Rails csc517_program1: test" uuid="d34d7f79-1c76-4ecf-ab55-36c5d6342c45">
+  <component name="DataSourceManagerImpl" format="xml" hash="1895223192">
+    <data-source source="LOCAL" name="Rails csc517_program1: test" uuid="f2ba7094-d511-4728-9ae7-4ea143ce507d">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/test.sqlite3</jdbc-url>
-      <explain-plan-config>
-        <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
-      </explain-plan-config>
+      <jdbc-url>jdbc:sqlite:C:\Users\micha_000\git\RailsClassPortal\db\test.sqlite3</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="Rails csc517_program1: development" uuid="35d3c499-a27e-45ab-b981-ae2d62a23ca0">
+    <data-source source="LOCAL" name="Rails csc517_program1: development" uuid="276aea10-0fbf-4f24-b67a-b546b8da424a">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\micha_000\git\RailsClassPortal\db\development.sqlite3</jdbc-url>
       <explain-plan-config>
         <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
       </explain-plan-config>
