@@ -38,6 +38,18 @@ class User < ActiveRecord::Base
   def can_read?(resource)
     resource.can_be_read_by?(self)
   end
+  def can_be_created_by?(user)
+    user.admin?
+  end
+  def can_be_destroyed_by?(user)
+    user.admin?
+  end
+  def can_be_updated_by?(user)
+    user == self or user.admin?
+  end
+  def can_be_read_by?(user)
+    user == self or user.admin?
+  end
 
   def self.inherited(child)
     child.instance_eval do
