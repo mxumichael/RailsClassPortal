@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     if !(@user.email == 'admin@admin.com') || !(current_user == @user)
       @user.destroy
       respond_to do |format|
-        format.html { redirect_to users_url }
+        format.html { redirect_to users_path(role: params[:role].to_s.downcase) }
         format.json { head :no_content }
       end
     else

@@ -46,10 +46,18 @@ end
 
 10.times do
   Student.create!(
-          name: Faker::Name.name,
-          email: Faker::Internet.email,
-          password: 'password',
-          password_confirmation: 'password'
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      password: 'password',
+      password_confirmation: 'password'
+  )
+end
+10.times do
+  Instructor.create!(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      password: 'password',
+      password_confirmation: 'password'
   )
 end
 (4..16).each do |i|
