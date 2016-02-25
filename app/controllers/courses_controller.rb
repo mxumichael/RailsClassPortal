@@ -26,15 +26,14 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    raise SecurityTransgression unless current_user.can_update?(Course.new)
   end
 
   # POST /courses
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
     raise SecurityTransgression unless current_user.can_create?(@course)
-
     respond_to do |format|
       if @course.save
         @enrollment = Enrollment.create(course_id: @course.id, user_id: params[:instructor], approve: true, deny: false)
@@ -51,7 +50,8 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
-      if @course.update(course_params)
+      if
+      @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else
