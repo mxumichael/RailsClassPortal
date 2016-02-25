@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     resource.can_be_created_by?(self)
   end
   def can_destroy?(resource)
-    resource.can_be_destoyed_by?(self)
+    resource.can_be_destroyed_by?(self)
   end
   def can_update?(resource)
     resource.can_be_updated_by?(self)

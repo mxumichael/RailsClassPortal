@@ -32,13 +32,13 @@
         <td data-link="<%= course_path(course) %>"><%= course.start_date %></td>
         <td data-link="<%= course_path(course) %>"><%= course.end_date %></td>
         <td data-link="<%= course_path(course) %>"><%= course.status %></td>
-        <% if (current_user.is_a? Admin) || (current_user.is_a? Instructor) %>
+        <% if (current_user.can_update? course) %>
             <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
         <% end %>
-        <% if current_user.is_a? Admin %>
+        <% if current_user.can_destroy? course %>
             <td ><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         <% end %>
-        <% if current_user.is_a? Student %>
+        <% if current_user.student? %>
             <td>
               <%= form_for(@enrollment) do |f| %>
                   <%= f.hidden_field :course_id, :value => course.id %>
