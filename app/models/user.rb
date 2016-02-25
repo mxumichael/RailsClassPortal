@@ -10,10 +10,33 @@ class User < ActiveRecord::Base
             :length => { :minimum => 8, :if => :validate_password? },
             :confirmation => { :if => :validate_password? }
 
-  private
+  def admin?
+    false
+  end
+  def super_user?
+    false
+  end
+  def instructor?
+    false
+  end
+  def student?
+    false
+  end
+  def user?
+    true
+  end
 
-  def validate_password?
-    password.present? || password_confirmation.present?
+  def can_create?(resource)
+    resource.can_be_created_by?(self)
+  end
+  def can_destroy?(resource)
+    resource.can_be_destoyed_by?(self)
+  end
+  def can_update?(resource)
+    resource.can_be_updated_by?(self)
+  end
+  def can_read?(resource)
+    resource.can_be_read_by?(self)
   end
 
   def self.inherited(child)
@@ -24,5 +47,14 @@ class User < ActiveRecord::Base
     end
     super
   end
+
+
+  private
+
+  def validate_password?
+    password.present? || password_confirmation.present?
+  end
+
+
 end
 
