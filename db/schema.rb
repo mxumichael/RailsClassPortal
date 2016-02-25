@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224202226) do
+ActiveRecord::Schema.define(version: 20160219182308) do
 
   create_table "courses", force: true do |t|
     t.integer  "course_number"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 20160224202226) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    t.integer  "roles_mask"
   end
 
 end
