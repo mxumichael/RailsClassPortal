@@ -14,4 +14,17 @@ class Enrollment < ActiveRecord::Base
     end
     return count > 1
   end
+
+  def can_be_created_by?(user)
+    user.user?
+  end
+  def can_be_destroyed_by?(user)
+    user == this[user] or !user.student?
+  end
+  def can_be_updated_by?(user)
+    false
+  end
+  def can_be_read_by?(user)
+    user.self? or !user.student?
+  end
 end

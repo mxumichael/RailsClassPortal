@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    raise SecurityTransgression unless current_user.can_read?(User.new)
   end
 
   # GET /users/1
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    raise SecurityTransgression unless current_user.can_update?(@user)
   end
 
   # POST /users
@@ -60,7 +62,7 @@ class UsersController < ApplicationController
     if !(@user.email == 'admin@admin.com') || !(current_user == @user)
       @user.destroy
       respond_to do |format|
-        format.html { redirect_to users_url }
+        format.html { redirect_to users_path(role: params[:role].to_s.downcase) }
         format.json { head :no_content }
       end
     else

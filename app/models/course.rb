@@ -10,4 +10,16 @@ class Course < ActiveRecord::Base
       find(:all)
     end
   end
+  def can_be_created_by?(user)
+    user.admin?
+  end
+  def can_be_destroyed_by?(user)
+    user.admin?
+  end
+  def can_be_updated_by?(user)
+    user.admin? or user == self
+  end
+  def can_be_read_by?(user)
+    user.admin? or user == self
+  end
 end

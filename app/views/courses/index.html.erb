@@ -8,7 +8,6 @@
       </p>
   <% end %>
 </div>
-
 <table class="table">
   <thead>
   <tr>
@@ -26,20 +25,20 @@
 
   <tbody>
   <% @courses.each do |course| %>
-      <tr class="node <%= cycle("even", "odd") %>" data-link="<%= course_path(course) %>">
-        <td><%= course.course_number %></td>
-        <td><%= course.title %></td>
-        <td><%= course.description %></td>
-        <td><%= course.start_date %></td>
-        <td><%= course.end_date %></td>
-        <td><%= course.status %></td>
-        <% if (current_user.is_a? Admin) || (current_user.is_a? Instructor) %>
+      <tr class="node <%= cycle("even", "odd") %>">
+        <td data-link="<%= course_path(course) %>"><%= course.course_number %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.title %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.description %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.start_date %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.end_date %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.status %></td>
+        <% if (current_user.can_update? course) %>
             <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
         <% end %>
-        <% if current_user.is_a? Admin %>
-            <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
+        <% if current_user.can_destroy? course %>
+            <td ><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         <% end %>
-        <% if current_user.is_a? Student %>
+        <% if current_user.student? %>
             <td>
               <%= form_for(@enrollment) do |f| %>
                   <%= f.hidden_field :course_id, :value => course.id %>
@@ -56,3 +55,6 @@
   <% end %>
   </tbody>
 </table>
+
+<%= link_to_function 'Back', 'history.back()', class: 'btn btn-default pull-right' %>
+

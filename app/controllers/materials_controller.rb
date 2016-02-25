@@ -1,10 +1,15 @@
 class MaterialsController < ApplicationController
   before_action :set_material, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   # GET /materials
   # GET /materials.json
   def index
-    @materials = Material.all
+    if logged_in?
+      @materials = Material.all
+    else
+      redirect_to welcome_index_path
+    end
   end
 
   # GET /materials/1

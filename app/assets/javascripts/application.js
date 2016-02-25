@@ -22,4 +22,9 @@ jQuery(document).ready(function() {
             window.location = this.dataset.link
         });
     });
+    jQuery(function ($) {
+        $('td[data-link]').click(function () {
+            window.location = this.dataset.link
+        });
+    });
 });

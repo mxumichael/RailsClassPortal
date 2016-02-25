@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @material %> |
-<%= link_to 'Back', materials_path %>
+<%= link_to_function 'Back', 'history.back()', class: 'btn btn-default pull-right' %>
