@@ -26,7 +26,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    raise SecurityTransgression unless current_user.can_update?(Course.new)
+    raise SecurityTransgression unless current_user.can_update?(@course)
   end
 
   # POST /courses

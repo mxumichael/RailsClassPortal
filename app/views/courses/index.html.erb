@@ -25,18 +25,18 @@
 
   <tbody>
   <% @courses.each do |course| %>
-      <tr class="node <%= cycle("even", "odd") %>" data-link="<%= course_path(course) %>">
-        <td><%= course.course_number %></td>
-        <td><%= course.title %></td>
-        <td><%= course.description %></td>
-        <td><%= course.start_date %></td>
-        <td><%= course.end_date %></td>
-        <td><%= course.status %></td>
+      <tr class="node <%= cycle("even", "odd") %>">
+        <td data-link="<%= course_path(course) %>"><%= course.course_number %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.title %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.description %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.start_date %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.end_date %></td>
+        <td data-link="<%= course_path(course) %>"><%= course.status %></td>
         <% if (current_user.is_a? Admin) || (current_user.is_a? Instructor) %>
             <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
         <% end %>
         <% if current_user.is_a? Admin %>
-            <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
+            <td ><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         <% end %>
         <% if current_user.is_a? Student %>
             <td>
