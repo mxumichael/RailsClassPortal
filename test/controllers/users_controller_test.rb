@@ -16,9 +16,22 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create user" do
+  test "should create student user" do
     assert_difference('User.count') do
-      post :create, user: { name: @user.name, email: 'newuser@email.com', type: @user.type, password: 'password', password_confirmation: 'password'}
+      post :create, user: { name: @user.name, email: 'newStudent_'+@user.email, type: @user.type, password: 'password', password_confirmation: 'password'}
+    end
+    assert_redirected_to welcome_index_path
+  end
+  test "should create admin user" do
+    assert_difference('User.count') do
+
+      post :create, user: { name: users(:two).name, email: 'newAdmin_'+users(:two).email, type: users(:two).type, password: 'password', password_confirmation: 'password'}
+    end
+    assert_redirected_to welcome_index_path
+  end
+  test "should create instructor user" do
+    assert_difference('User.count') do
+      post :create, user: { name: users(:three).name, email: 'newInstructor_'+users(:three).email, type: users(:three).type, password: 'password', password_confirmation: 'password'}
     end
     assert_redirected_to welcome_index_path
   end
