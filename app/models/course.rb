@@ -20,6 +20,7 @@ class Course < ActiveRecord::Base
     user.admin? or user == self
   end
   def can_be_read_by?(user)
-    user.admin? or user == self
+    user.admin? or user == self or user.student? or user.instructor
   end
+
 end
