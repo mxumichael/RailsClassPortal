@@ -17,10 +17,9 @@ class Course < ActiveRecord::Base
     user.admin?
   end
   def can_be_updated_by?(user)
-    user.admin? or user == self
+    user.admin? or user.instructor?
   end
   def can_be_read_by?(user)
-    user.admin? or user == self or user.student? or user.instructor
+    user.user?
   end
-
 end
