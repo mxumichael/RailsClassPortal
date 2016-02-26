@@ -11,16 +11,16 @@
     </div>
   <% end %>
 
-    <div class="form-group center field">
+    <div class="field">
       <%= f.label :course_number %><br>
-      <%= f.collection_select(:course_id, Course.all, :id, :title, {} ) %>
+      <%= f.collection_select(:course_id, Course.all, :id, :title, {}) %>
     </div>
 
     <%= f.hidden_field :approve, :value => true %>
     <%= f.hidden_field :deny, :value => false %>
     <%= f.hidden_field :user_id, :value => params[:user]%>
 
-  <div class="form-group center actions">
-    <%= f.submit %>
+  <div class="actions">
+    <%= f.submit 'Submit', class: 'btn btn-primary pull-right'%>
   </div>
 <% end %>

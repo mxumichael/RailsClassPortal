@@ -13,18 +13,18 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.text_field :category, class: 'form-control' %>
   </div>
     <%= f.hidden_field :course_id, :value => params[:course]%>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit', class: 'btn btn-primary pull-right' %>
   </div>
 <% end %>
