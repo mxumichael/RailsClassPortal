@@ -105,6 +105,6 @@
 <%end%>
 <%if !current_user.is_a? Student %>
     <%=link_to 'Add Material', new_material_path(course: @course.id), class: 'btn btn-primary pull-right'%>
-<%end%>
-<%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-default pull-right' %> |
+    <%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-default pull-right' %>
+<%end%>Fixed
 <%= link_to 'Back', courses_path, class: 'btn btn-default pull-right' %>
