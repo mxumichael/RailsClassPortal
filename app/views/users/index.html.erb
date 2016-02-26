@@ -48,7 +48,11 @@
           <td><%= link_to 'Destroy', user_path(user, role: params[:role]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         <% end %>
         <% if (current_user.is_a? Admin) && !(user.is_a? Admin) %>
-          <td><%=link_to 'Enroll', new_enrollment_path(user: user.id), class: 'btn btn-primary btn-sm' %></td>
+            <% if user.is_a? Instructor %>
+                <td><%=link_to 'Add Course', new_enrollment_path(user: user.id), class: 'btn btn-primary btn-sm' %></td>
+            <% else %>
+                <td><%=link_to 'Enroll', new_enrollment_path(user: user.id), class: 'btn btn-primary btn-sm' %></td>
+            <% end %>
         <%end%>
       </tr>
     <% end %>
@@ -57,5 +61,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path, class: 'btn btn-default pull-right' %>
 <%= link_to_function 'Back', 'history.back()', class: 'btn btn-default pull-right' %>
