@@ -16,10 +16,10 @@
             <%= link_to 'Add Course', new_course_path, class: 'btn btn-default' %>
             <%= link_to 'View Courses', courses_path, class: 'btn btn-default' %>
         <%end %>
-        <%if current_user.is_a? Instructor %>
-            <%= link_to 'View Courses', courses_path %>
+        <%if current_user.instructor? %>
+            <%= link_to 'View Courses', courses_path, class: 'btn btn-default' %>
         <%end%>
-        <%if current_user.is_a? Student %>
+        <%if current_user.student? %>
             <%= link_to 'My Courses', user_path(@current_user), class: 'btn btn-default'%>
             <%= link_to 'Search Courses', courses_path, class: 'btn btn-default' %>
         <%end %>

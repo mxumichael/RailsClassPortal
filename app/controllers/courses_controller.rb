@@ -4,6 +4,9 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    if current_user.instructor?
+      @instructed_list = Course.where("")
+    end
     @enrollment = Enrollment.new
     @courses = Course.where(
         "course_number LIKE (?) OR title LIKE (?)",
