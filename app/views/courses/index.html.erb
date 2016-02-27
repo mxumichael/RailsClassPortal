@@ -35,6 +35,9 @@
         <% if current_user.admin? %>
             <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
         <% end %>
+        <% if current_user.instructor? %>
+            <td><%= link_to 'Request Inactive', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
+        <% end %>
         <% if current_user.can_destroy? course %>
             <td ><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         <% end %>

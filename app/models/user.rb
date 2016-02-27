@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
     true
   end
 
+  def id
+    :id
+  end
   def can_create?(resource)
     resource.can_be_created_by?(self)
   end

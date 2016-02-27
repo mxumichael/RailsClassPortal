@@ -49,12 +49,7 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1.json
   def update
     raise SecurityTransgression unless current_user.can_update? @course
-    @starting =  DateTime.new(course_params['start_date(1i)'].to_i,
-                              course_params['start_date(2i)'].to_i,
-                              course_params['start_date(3i)'].to_i)
-    @ending =  DateTime.new(course_params['end_date(1i)'].to_i,
-                            course_params['end_date(2i)'].to_i,
-                            course_params['end_date(3i)'].to_i)
+    create_dates
     if @ending <= @starting
       flash[:notice] = 'End date must be after start date!'
       render action: 'edit'
@@ -77,6 +72,21 @@ class CoursesController < ApplicationController
   end
 
   private
+  def create_dates
+    if course_params.has_key?('start_date(1i)')
+    @starting =  DateTime.new(course_params['start_date(1i)'].to_i,
+                              course_params['start_date(2i)'].to_i,
+                              course_params['start_date(3i)'].to_i)
+    @ending =  DateTime.new(course_params['end_date(1i)'].to_i,
+                            course_params['end_date(2i)'].to_i,
+                            course_params['end_date(3i)'].to_i)
+
+    end; if course_params.has_key?('start_date')
+           @starting = course_params['start_date']
+           @ending = course_params['end_date']
+         end
+  end
+
   def find_courses
     Course.where(
         'course_number LIKE (?) OR title LIKE (?)',
@@ -91,6 +101,6 @@ class CoursesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def course_params
-    params.require(:course).permit(:course_number, :title, :description, :start_date, :end_date, :status, :query, :instructor)
+    params.require(:course).permit(:course_number, :title, :description, :start_date, :end_date, :status, :query, :instructor, :request_inactive)
   end
 end

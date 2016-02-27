@@ -67,6 +67,7 @@
       <column name="status" sqlType="VARCHAR(255)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="updated_at" sqlType="DATETIME" precision="0" scale="-1" nullable="true" jdbcType="12"/>
+      <column name="request_inactive" sqlType="BOOLEAN" precision="0" scale="-1" nullable="true" jdbcType="4" def="J2Yn"/>
       <primary-key columns="id"/>
     </table>
     <table name="enrollments" schema="" catalog="" type="TABLE">

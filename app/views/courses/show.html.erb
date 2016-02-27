@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 <h1 class="center"><%=@course.course_number%>: <%=@course.title%></h1>
 <h2 class="center"><%= @course.start_date%> - <%= @course.end_date%></h2>
-<h2 class="center"><%=@course.status%></h2>
+<h2 class="center"><%=@course.status%>
+  <% if @course[:request_inactive] %><br>Inactive pending admin approval<% end %>
+</h2>
 <p class="center"><%= @course.description%></p>
 <h3 class="center">Course Materials</h3>
 
@@ -87,13 +89,13 @@
                         </td>
                     <%end%>
                     <% if enrollment.approve %>
-                      <% if enrollment.grade.blank? %>
-                          <td><%= link_to 'Post Grade', edit_enrollment_path(enrollment), class: 'btn btn-info btn-sm'%></td>
-                      <% else %>
-                          <td><%=enrollment.grade%> <%= link_to 'Edit', edit_enrollment_path(enrollment), class: 'btn btn-warning btn-sm'%></td>
-                      <%end%>
+                        <% if enrollment.grade.blank? %>
+                            <td><%= link_to 'Post Grade', edit_enrollment_path(enrollment), class: 'btn btn-info btn-sm'%></td>
+                        <% else %>
+                            <td><%=enrollment.grade%> <%= link_to 'Edit', edit_enrollment_path(enrollment), class: 'btn btn-warning btn-sm'%></td>
+                        <%end%>
                     <% else %>
-                      <td></td>
+                        <td></td>
                     <% end %>
                     <td><%= link_to 'Remove', enrollment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'%></td>
                   </tr>

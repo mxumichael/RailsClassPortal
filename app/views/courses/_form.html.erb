@@ -9,36 +9,71 @@
           </ul>
         </div>
     <% end %>
-    <div class="field">
-      <%= f.label :course_number %><br>
-      <%= f.text_field :course_number, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :description %><br>
-      <%= f.text_field :description, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :start_date %><br>
-      <%= f.date_select :start_date, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :end_date %><br>
-      <%= f.date_select :end_date, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :status %><br>
-      <%= f.select :status, options_for_select(Course.status_options), {}, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :instructor %>
-      <%= select_tag :instructor, options_from_collection_for_select(User.where('type = ?', 'Instructor'), 'id', 'name'), class: 'form-control'%>
-    </div>
-    <div class="actions">
-      <%= f.submit 'Submit', class: 'btn btn-primary pull-right' %>
-    </div>
+    <% if current_user.admin? %>
+        <div class="field">
+          <%= f.label :course_number %><br>
+          <%= f.text_field :course_number, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :title %><br>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :description %><br>
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :start_date %><br>
+          <%= f.date_select :start_date, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :end_date %><br>
+          <%= f.date_select :end_date, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :status %><br>
+          <%= f.select :status, options_for_select(Course.status_options), {}, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :instructor %>
+          <%= select_tag :instructor, options_from_collection_for_select(User.where('type = ?', 'Instructor'), 'id', 'name'), class: 'form-control'%>
+        </div>
+        <div class="actions">
+          <%= f.submit 'Submit', class: 'btn btn-primary pull-right' %>
+        </div>
+    <% else %>
+        <div class="field">
+          <%= f.hidden_field :course_number, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <h3><%= @course[:title] %></h3>
+          <%= f.hidden_field :title, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <h3><%= @course[:description] %></h3>
+          <%= f.hidden_field :description, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <h3>Begin date: <%= @course[:start_date] %></h3>
+          <%= f.hidden_field :start_date, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <h3>End date: <%= @course[:end_date] %></h3>
+          <%= f.hidden_field :end_date, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <h3>Status: <%= @course[:status] %></h3>
+          <%= f.hidden_field :status, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.hidden_field :request_inactive, class: 'form-control', :value => true %>
+        </div>
+        <% if @course[:request_inactive] %>
+             <h4>Inactive pending admin approval</h4>
+        <% end %>
+        <div class="actions">
+          <%= f.submit 'Request Inactive Status', class: 'btn btn-primary pull-right' %>
+        </div>
+    <% end %>
     <%= link_to_function 'Back', 'history.back()', class: 'btn btn-default pull-right' %>
 <% end %>
