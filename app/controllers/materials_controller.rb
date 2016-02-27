@@ -5,76 +5,67 @@ class MaterialsController < ApplicationController
   # GET /materials
   # GET /materials.json
   def index
-    if logged_in?
-      @materials = Material.all
-    else
-      redirect_to welcome_index_path
-    end
+    raise SecurityTransgression unless Material.can_be_read_by? current_user
+    @materials = Material.all
   end
 
   # GET /materials/1
   # GET /materials/1.json
   def show
+    raise SecurityTransgression unless current_user.can_read? @material
   end
 
   # GET /materials/new
   def new
+    raise SecurityTransgression unless Material.can_be_created_by? current_user
     @material = Material.new
   end
 
   # GET /materials/1/edit
   def edit
+    raise SecurityTransgression unless current_user.can_update? @material
   end
 
   # POST /materials
   # POST /materials.json
   def create
+    raise SecurityTransgression unless Material.can_be_created_by? current_user
     @material = Material.new(material_params)
-
-    respond_to do |format|
-      if @material.save
-        format.html { redirect_to course_path(@material.course_id), notice: 'Material was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @material }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @material.errors, status: :unprocessable_entity }
-      end
+    if @material.save
+      redirect_to course_path(@material.course_id), notice: 'Material was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /materials/1
   # PATCH/PUT /materials/1.json
   def update
-    respond_to do |format|
-      if @material.update(material_params)
-        format.html { redirect_to @material, notice: 'Material was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @material.errors, status: :unprocessable_entity }
-      end
+    raise SecurityTransgression unless current_user.can_update? @material
+    if @material.update(material_params)
+      redirect_to @material, notice: 'Material was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   # DELETE /materials/1
   # DELETE /materials/1.json
   def destroy
+    raise SecurityTransgression unless current_user.can_destroy? @material
     id = @material.course_id
     @material.destroy
-    respond_to do |format|
-      format.html { redirect_to course_path(id) }
-      format.json { head :no_content }
-    end
+    redirect_to course_path(id)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_material
-      @material = Material.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_material
+    @material = Material.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def material_params
-      params.require(:material).permit(:title, :description, :category, :course_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def material_params
+    params.require(:material).permit(:title, :description, :category, :course_id)
+  end
 end

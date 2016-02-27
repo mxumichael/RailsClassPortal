@@ -40,6 +40,9 @@ class User < ActiveRecord::Base
   def can_read?(resource)
     resource.can_be_read_by?(self)
   end
+  def self.can_be_created_by?(user)
+    user.admin?
+  end
   def can_be_created_by?(user)
     user.admin?
   end
@@ -47,6 +50,9 @@ class User < ActiveRecord::Base
     user.admin?
   end
   def can_be_updated_by?(user)
+    user == self or user.admin?
+  end
+  def self.can_be_read_by?(user)
     user == self or user.admin?
   end
   def can_be_read_by?(user)

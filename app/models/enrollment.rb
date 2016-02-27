@@ -15,6 +15,9 @@ class Enrollment < ActiveRecord::Base
     return count > 1
   end
 
+  def self.can_be_created_by?(user)
+    user.user?
+  end
   def can_be_created_by?(user)
     user.user?
   end
@@ -23,6 +26,9 @@ class Enrollment < ActiveRecord::Base
   end
   def can_be_updated_by?(user)
     false
+  end
+  def self.can_be_read_by?(user)
+    user.self? or !user.student?
   end
   def can_be_read_by?(user)
     user.self? or !user.student?
