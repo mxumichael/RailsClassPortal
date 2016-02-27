@@ -31,7 +31,7 @@
     </div>
     <div class="field">
       <%= f.label :status %><br>
-      <%= f.text_field :status, class: 'form-control' %>
+      <%= f.select :status, options_for_select(Course.status_options), {}, class: 'form-control' %>
     </div>
     <div class="field">
       <%= f.label :instructor %>

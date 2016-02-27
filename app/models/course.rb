@@ -23,4 +23,8 @@ class Course < ActiveRecord::Base
     user.admin? or user == self or user.student? or user.instructor
   end
 
+  def self.status_options
+    @options = %w(Active Inactive)
+  end
+
 end
