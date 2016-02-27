@@ -28,4 +28,13 @@ class Course < ActiveRecord::Base
     @options = %w(Active Inactive)
   end
 
+  def start_end_date_validation
+    if self[:end_date] < self[:start_date]
+      errors[:end_date] << "Error message"
+      false
+    else
+      true
+    end
+  end
+
 end

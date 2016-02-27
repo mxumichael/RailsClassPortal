@@ -37,14 +37,19 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     raise SecurityTransgression unless current_user.can_create?(@course)
-    respond_to do |format|
-      if @course.save
-        @enrollment = Enrollment.create(course_id: @course.id, user_id: params[:instructor], approve: true, deny: false)
-        format.html { redirect_to welcome_index_path, notice: 'Course was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @course }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+    if @course[:end_date] <= @course[:start_date]
+      flash[:notice] = 'End date must be after start date!'
+      redirect_to new_course_path course_params
+    else
+      respond_to do |format|
+        if @course.save
+          @enrollment = Enrollment.create(course_id: @course.id, user_id: params[:instructor], approve: true, deny: false)
+          format.html { redirect_to welcome_index_path, notice: 'Course was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @course }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @course.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -52,14 +57,27 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
-    respond_to do |format|
-      if
-      @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+    @starting =  DateTime.new(course_params["start_date(1i)"].to_i,
+                              course_params["start_date(2i)"].to_i,
+                              course_params["start_date(3i)"].to_i)
+    @ending =  DateTime.new(course_params["end_date(1i)"].to_i,
+                            course_params["end_date(2i)"].to_i,
+                            course_params["end_date(3i)"].to_i)
+    if @ending <= @starting
+      flash[:notice] = 'End date must be after start date!'
+      redirect_to edit_course_path course_params
+    else
+
+
+      respond_to do |format|
+        if
+        @course.update(course_params)
+          format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @course.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
