@@ -1,6 +1,6 @@
 <%
   if params[:role] == 'admin'
-    user_list = User.where("type = 'Admin'")
+    user_list = User.where("type = 'Admin' OR type = 'SuperUser'")
   elsif params[:role] == 'instructor'
     user_list = User.where("type = 'Instructor'")
   elsif params[:role] == 'student'
@@ -44,8 +44,9 @@
         <td><%= role %></td>
         <td><%= link_to 'Profile', user, class: 'btn btn-info btn-sm' %></td>
         <td><%= link_to 'Edit', edit_user_path(user, role: user[:type]), class: 'btn btn-warning btn-sm' %></td>
-        <% if ((current_user.is_a? Admin) && current_user != user) && user.email != 'admin@admin.com' %>
+        <% if current_user.can_destroy?(user) %>
           <td><%= link_to 'Destroy', user_path(user, role: params[:role]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
+        <% else %> <td></td>
         <% end %>
         <% if (current_user.is_a? Admin) && !(user.is_a? Admin) %>
             <% if user.is_a? Instructor %>
