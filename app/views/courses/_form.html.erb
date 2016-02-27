@@ -46,12 +46,12 @@
           <%= f.hidden_field :course_number, class: 'form-control' %>
         </div>
         <div class="field">
-          <h3><%= @course[:title] %></h3>
-          <%= f.hidden_field :title, class: 'form-control' %>
+          <h3>Number:<%= @course[:course_number] %></h3><%= f.label :title %><br>
+          <%= f.text_field :title, class: 'form-control' %>
         </div>
         <div class="field">
-          <h3><%= @course[:description] %></h3>
-          <%= f.hidden_field :description, class: 'form-control' %>
+          <%= f.label :description %><br>
+          <%= f.text_field :description, class: 'form-control' %>
         </div>
         <div class="field">
           <h3>Begin date: <%= @course[:start_date] %></h3>
@@ -65,15 +65,40 @@
           <h3>Status: <%= @course[:status] %></h3>
           <%= f.hidden_field :status, class: 'form-control' %>
         </div>
-        <div class="field">
-          <%= f.hidden_field :request_inactive, class: 'form-control', :value => true %>
-        </div>
+
         <% if @course[:request_inactive] %>
-             <h4>Inactive pending admin approval</h4>
+            <h4>Inactive pending admin approval</h4>
         <% end %>
         <div class="actions">
-          <%= f.submit 'Request Inactive Status', class: 'btn btn-primary pull-right' %>
+          <%= f.submit 'Update Course', class: 'btn btn-primary pull-right' %>
         </div>
     <% end %>
-    <%= link_to_function 'Back', 'history.back()', class: 'btn btn-default pull-right' %>
 <% end %>
+<%= form_for(@course) do |f| %>
+    <div class="field">
+      <%= f.hidden_field :course_number, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :title, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :description, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :start_date, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :end_date, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :status, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :request_inactive, class: 'form-control', :value => true %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Request Inactive', class: 'btn btn-primary pull-right' %>
+    </div>
+<% end %>
+<%= link_to_function 'Back', 'history.back()', class: 'btn btn-default pull-left' %>
+

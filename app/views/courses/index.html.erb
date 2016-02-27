@@ -34,6 +34,9 @@
         <td data-link="<%= course_path(course) %>"><%= course.status %></td>
         <% if current_user.admin? %>
             <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
+            <% if course[:request_inactive] %>
+                <td><%= link_to 'Confirm Inactive Request', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
+            <% end %>
         <% end %>
         <% if current_user.instructor? %>
             <td><%= link_to 'Request Inactive', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
