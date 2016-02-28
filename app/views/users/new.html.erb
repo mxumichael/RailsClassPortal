@@ -1,18 +1,18 @@
 <h1>New user</h1>
 <div class="col-md-6 col-md-offset-3">
-<% if params[:role] != 'Student' %>
-    <% if logged_in? %>
-        <% if current_user.admin? %>
-            <%= render 'form' %>
-        <% else raise SecurityTransgression %>
-        <% end %>
-    <% else %>
-        <script type="text/javascript">
-          window.location.href="/users/new?role=Student"
-        </script>
-    <% end %>
-<% else %>
-    <%= render 'form' %>
-<% end %>
+  <% if logged_in? %>
+      <% if params[:role] != 'Student' %>
+          <% if current_user.admin? %>
+              <%= render 'form' %>
+          <% else raise SecurityTransgression %>
+          <% end %>
+      <% else %>
+          <script type="text/javascript">
+            window.location.href="/users/new?role=Student"
+          </script>
+      <% end %>
+  <% else %>
+      <%= render 'form' %>
+  <% end %>
   <%= link_to_function 'Back', 'history.back()', class: 'btn btn-default pull-right' %>
 </div>

@@ -50,7 +50,7 @@
   </tbody>
 </table>
 
-<% if !current_user.is_a? Student %>
+<% unless current_user.student? %>
     <h3 class="center">Course Participants</h3>
     <table class="table table-striped table-hover">
       <thead>
@@ -63,7 +63,7 @@
 
       <tbody>
       <% @course.enrollments.each do |enrollment| %>
-          <% if !enrollment.deny %>
+          <% unless enrollment.deny %>
               <% user = User.find_by(id: enrollment.user_id)%>
               <% if user && (user.is_a? Student) %>
                   <tr>

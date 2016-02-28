@@ -54,8 +54,10 @@ class CoursesController < ApplicationController
       flash[:notice] = 'End date must be after start date!'
       render action: 'edit'
     else
-      if
-      @course.update(course_params)
+    if @course[:status] == 'Inactive' and course_params[:status] == 'Active'
+      email_active_status(@enrolled_users, @course)
+    end
+      if @course.update(course_params)
         redirect_to @course, notice: 'Course was successfully updated.'
       else
         render action: 'edit'
@@ -74,12 +76,12 @@ class CoursesController < ApplicationController
   private
   def create_dates
     if course_params.has_key?('start_date(1i)')
-    @starting =  DateTime.new(course_params['start_date(1i)'].to_i,
-                              course_params['start_date(2i)'].to_i,
-                              course_params['start_date(3i)'].to_i)
-    @ending =  DateTime.new(course_params['end_date(1i)'].to_i,
-                            course_params['end_date(2i)'].to_i,
-                            course_params['end_date(3i)'].to_i)
+      @starting =  DateTime.new(course_params['start_date(1i)'].to_i,
+                                course_params['start_date(2i)'].to_i,
+                                course_params['start_date(3i)'].to_i)
+      @ending =  DateTime.new(course_params['end_date(1i)'].to_i,
+                              course_params['end_date(2i)'].to_i,
+                              course_params['end_date(3i)'].to_i)
 
     end; if course_params.has_key?('start_date')
            @starting = course_params['start_date']
@@ -102,5 +104,17 @@ class CoursesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def course_params
     params.require(:course).permit(:course_number, :title, :description, :start_date, :end_date, :status, :query, :instructor, :request_inactive)
+  end
+
+  def enrolled_users
+    @enrolled_users = []
+    @course.enrollments.each do |enrollment|
+      unless enrollment.deny
+        user = User.find_by(id: enrollment.user_id)
+        if user.student?
+        @enrolled_users.push(user)
+        end
+      end
+    end
   end
 end

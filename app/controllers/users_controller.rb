@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    raise SecurityTransgression unless User.can_be_created_by? current_user
     @user = User.new
   end
 
@@ -29,7 +28,6 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    raise SecurityTransgression unless User.can_be_created_by? current_user
     @user = User.new(user_params)
     if @user.save
       unless logged_in?
