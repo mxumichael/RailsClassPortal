@@ -24,5 +24,8 @@ Admins may enroll users (instructors & students) in a course from the listed use
 
 Course materials may be added to a course from the indivudal course's page
 
-New courses should have a status of:
-Active
+When a course is deleted all of the contents are removed from a system. When I course is done being used it will go "Inactive" and all of the content will remain in the system. 
+
+## Extra Credit
+
+We have implemented the Email activation and Instructors requesting to make a course inactive 
