@@ -61,7 +61,9 @@ class User < ActiveRecord::Base
   def can_be_read_by?(user)
     user == self or user.admin?
   end
-
+  def email
+    self[:email]
+  end
   def self.inherited(child)
     child.instance_eval do
       def model_name

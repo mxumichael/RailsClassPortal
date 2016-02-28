@@ -54,7 +54,10 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     raise SecurityTransgression unless current_user.can_destroy?(@user)
-    if !(@user.email == 'admin@admin.com') || !(current_user == @user)
+    unless (@user.email == 'admin@admin.com') or (current_user == @user)
+      @user.enrollments.each do |enrollment|
+        Enrollment.destroy(enrollment)
+      end
       @user.destroy
       redirect_to users_path(role: params[:role].to_s.downcase)
     else

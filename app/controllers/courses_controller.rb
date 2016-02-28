@@ -54,9 +54,11 @@ class CoursesController < ApplicationController
       flash[:notice] = 'End date must be after start date!'
       render action: 'edit'
     else
-    if @course[:status] == 'Inactive' and course_params[:status] == 'Active'
-      UserMailer.email_active_status(enrolled_users, @course).deliver
-    end
+      if @course[:status] == 'Inactive' and course_params[:status] == 'Active'
+        enrolled_users.each do |user_to_email|
+          UserMailer.email_active_status(user_to_email, @course).deliver
+        end
+      end
       if @course.update(course_params)
         redirect_to @course, notice: 'Course was successfully updated.'
       else
@@ -111,8 +113,10 @@ class CoursesController < ApplicationController
     @course.enrollments.each do |enrollment|
       unless enrollment.deny
         user = User.find_by(id: enrollment.user_id)
-        if user.student?
-        @enrolled_users.push(user)
+        unless user.nil?
+          if user.student?
+            @enrolled_users.push(user)
+          end
         end
       end
     end
