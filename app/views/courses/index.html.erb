@@ -41,7 +41,7 @@
         <% if current_user.can_destroy? course %>
             <td ><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
         <% end %>
-        <% if course[:request_inactive] %>
+        <% if course[:request_inactive] and current_user.admin? %>
             <td><%= link_to 'Confirm Inactive Request', edit_course_path(course), class: 'btn btn-warning btn-sm' %></td>
         <% else %>
         <td></td>
