@@ -55,7 +55,7 @@ class CoursesController < ApplicationController
       render action: 'edit'
     else
     if @course[:status] == 'Inactive' and course_params[:status] == 'Active'
-      email_active_status(@enrolled_users, @course)
+      UserMailer.email_active_status(enrolled_users, @course).deliver
     end
       if @course.update(course_params)
         redirect_to @course, notice: 'Course was successfully updated.'

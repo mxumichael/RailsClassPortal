@@ -25,7 +25,7 @@ class Enrollment < ActiveRecord::Base
     user == this[user] or !user.student?
   end
   def can_be_updated_by?(user)
-    false
+    user.instructor? or user.admin?
   end
   def self.can_be_read_by?(user)
     user.self? or !user.student?
